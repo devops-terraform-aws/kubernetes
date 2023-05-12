@@ -1,7 +1,7 @@
 #!/bin/bash
 
-docker build -t my-python-app .
-docker run -p 5000:5000 my-python-app
+docker build -t create-ec2 .
+docker run -p 5000:5000 create-ec2
 
 # Explanations
 # Running on all addresses (0.0.0.0): This message indicates that the Flask application is running and listening on all available network interfaces inside the Docker container. The IP address 0.0.0.0 means it's bound to all network interfaces.

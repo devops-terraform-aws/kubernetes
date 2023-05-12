@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create EC2 Instance</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='create_style.css') }}">
+    </head>
+    <body>
+        <h1>Create EC2 Instance</h1>
+        <form method="post">
+            <label>Select an AMI
+            <select name="selected_ami">
+              {% for ami in amis %}
+                <option value="{{ ami.ImageId }}">{{ ami.Name }}</option>
+              {% endfor %}
+            </select>
+            </label><br>
+            <label for="region">Region
+            <select name="region" id="region">
+                <option value="us-east-1">US East (N. Virginia) | us-east-1</option>
+                <option value="us-east-2">US East (Ohio) | us-east-2</option>
+                <option value="us-west-2">US West (Oregon) | us-west-2</option>
+                <option value="us-west-1">US West (N. California) | us-west-1</option>
+                <option value="ca-central-1">Canada (Central) | ca-central-1</option>
+                <option value="eu-west-1">EU (Ireland) | eu-west-1</option>
+                <option value="eu-central-1">EU (Frankfurt) | eu-central-1</option>
+                <option value="ap-northeast-1">Asia Pacific (Tokyo) | ap-northeast-1</option>
+                <option value="ap-northeast-2">Asia Pacific (Seoul) | ap-northeast-2</option>
+                <option value="ap-south-1">Asia Pacific (Mumbai) | ap-south-1</option>
+                <option value="ap-southeast-1">Asia Pacific (Singapore) | ap-southeast-1</option>
+                <option value="ap-southeast-2">Asia Pacific (Sydney) | ap-southeast-2</option>
+            </select></label>
+            <br>
+            <label for="instance_type">Instance Type
+            <select name="instance_type" id="instance_type">
+                <option value="t2.micro">t2.micro</option>
+                <option value="t2.small">t2.small</option>
+                <option value="t2.medium">t2.medium</option>
+            </select></label>
+            <br>
+            <label for="tag_name">Tag Name
+            <input type="text" name="tag_name" id="tag_name" autofocus required>
+            <input type="submit" value="Create"></label>
+        </form>
+        <div class="response">
+            {{ response }}
+        </div>
+        {% if response %}
+        {% else %}
+        {% endif %}
+    </body>
+</html>
+

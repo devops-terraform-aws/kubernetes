@@ -1,4 +1,4 @@
-# EC2 instance creation using Python and boto3 library
+# Kubernetes | EC2 instance creation using Python and boto3 library
 This script allows the user to create an EC2 instance in a specified region using the latest Ubuntu 20.04 LTS AMI. The script uses the `boto3` library to interact with AWS services.
 
 ## Prerequisites

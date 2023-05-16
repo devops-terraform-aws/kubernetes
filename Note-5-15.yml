@@ -1,0 +1,49 @@
+Definitions
+
+Pod - container is running, pod is running on virtual node (machine).
+
+1/1 ->  has one container
+
+0/1 Creation mode
+
+Commands
+- kubectl get pods
+- kubectl delete pod podName
+- kubectl get svc
+
+ImagePullBackoff -  The name "*" doesn't exist
+
+- Pod: Smallest deployable unit.
+
+Services: Creates a bridge between user and pod 
+  - ClusterIP - On my node and I have my pod running ( 1 cluster ip). Used by database
+  - Nodeport - Map a code with output present on the pod. link node and a pod
+  - LoadBalacer - Create public ip for pod and user will be able to access it with a public ip
+
+
+Create a Service via a file ( manifest) and command line
+
+
+IP - Private ip(s)
+
+Commands
+- kubectl get pods || kubectl get po -o yaml( to format to a yaml file)
+- kubectl get nodes -- list all nodes( master and worker nodes)
+- kubectl get service || kubectl get svc -owide(gives broad set of information)
+- kubectl apply -f *.yaml  -- to create or apply changes. To format output
+- kubectl describe pod podName -- for see the description (share logs, and specific informations, description). 
+                                  Used for debugging
+- kubectl logs containerName -- give entire logs of a container
+- kubectl exec -it pod-name -- /bin/bash  get into the container
+- kubectl  
+
+
+troubleshooting
+- Describe pod, from the errors we can fix the bug
+
+
+
+apiVersion: Which api versions to use
+kind: Deplpyment, Pod
+metadata: what name and labels
+spec: components we want to specify

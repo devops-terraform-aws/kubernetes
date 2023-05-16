@@ -2,11 +2,19 @@
 
 # Stop all running containers
 echo "Stopping all running containers..."
-docker stop $(docker ps -aq)
+if [ "$(docker ps -q)" ]; then
+    docker stop $(docker ps -aq)
+else
+    echo "No running containers found."
+fi
 
 # Remove all containers
 echo "Removing all containers..."
-docker rm $(docker ps -aq)
+if [ "$(docker ps -aq)" ]; then
+    docker rm $(docker ps -aq)
+else
+    echo "No containers found."
+fi
 
 # Remove all unused images
 echo "Removing unused images..."

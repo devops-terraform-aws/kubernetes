@@ -1,0 +1,30 @@
+Terraform variable in a configuration: variable block
+Environmental variable: export AWS_ACCESS_KEY_ID="your-access-key-id"
+
+Command-line flags: Terraform checks for variable values provided through command-line flags. 
+                    You can pass variable values directly in the command line using the -var flag. For example, -var="region=us-east-1".
+
+Variable files: Terraform loads variable values from files specified using the -var-file flag. 
+                This flag allows you to explicitly provide a file containing variable assignments. For example, -var-file="variables.tfvars".
+
+Environment variables: Terraform checks for environment variables prefixed with TF_VAR_ followed by the variable name. 
+                        For example, if you have a variable named region, Terraform will look for an environment variable named TF_VAR_region and use its value if found.
+
+terraform.tfvars or *.auto.tfvars files: Terraform automatically loads variable values from terraform.tfvars or any file with the extension .auto.tfvars in the current working directory. If multiple files exist, they are loaded in alphabetical order.
+
+Default values in the variable block: If no values are provided through the previous methods, 
+                                      Terraform falls back to the default value specified in the variable block within the Terraform configuration. 
+                                      The default value is defined using the default argument within the variable block.
+
+  In summary, the terraform.tfvars file is loaded before the default value in the variable block. 
+  If a value is specified in the terraform.tfvars file, it will override the default value. 
+  If no value is found in terraform.tfvars, the default value will be used if defined.
+
+
+For Loop:
+
+  In this updated output, the for expression iterates over the keys of var.bucket_names, 
+  and for each key, it accesses the corresponding aws_s3_bucket.my_buckets resource using my_buckets[key].arn. 
+  The result is a list of bucket ARNs.
+  By using the keys function and explicitly iterating over the keys, 
+  you can obtain the ARNs of all the S3 buckets created by the for_each loop and include them in the output.

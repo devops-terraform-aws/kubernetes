@@ -12,17 +12,7 @@ Commands
 - kubectl get svc
 
 ImagePullBackoff -  The name "*" doesn't exist
-
-- Pod: Smallest deployable unit.
-
-Services: Creates a bridge between user and pod 
-  - ClusterIP - On my node and I have my pod running ( 1 cluster ip). Used by database
-  - Nodeport - Map a code with output present on the pod. link node and a pod
-  - LoadBalacer - Create public ip for pod and user will be able to access it with a public ip
-
-
 Create a Service via a file ( manifest) and command line
-
 
 IP - Private ip(s)
 
@@ -40,6 +30,15 @@ Commands
 
 troubleshooting
 - Describe pod, from the errors we can fix the bug
+- Pod: Smallest deployable unit.
+
+Services: Creates a bridge between user and pod 
+  - ClusterIP - On my node and I have my pod running ( 1 cluster ip). Used by database
+  - Nodeport - Map a code with output present on the pod. link node and a pod
+  - LoadBalacer - Create public ip for pod and user will be able to access it with a public ip
+
+
+
 
 
 

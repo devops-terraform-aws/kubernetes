@@ -1,0 +1,57 @@
+LoadBalacing = Network LoadBalacing
+
+Methods of Deploying an Application
+ - Deploment - Bigger set ( stalest application) - they dont perform read and write operation\
+              A Deployment is a higher-level abstraction that provides declarative updates for managing application deployments.
+              It is responsible for creating and managing ReplicaSets.
+ - Replica-Set - smaller set (stateful application like database)
+                A ReplicaSet is a lower-level controller that ensures a specified number of replicas (pods) of a particular pod template are running at all times.
+                It is responsible for maintaining the desired number of replicas, monitoring the health of the pods, and creating or deleting pods as necessary to meet the desired state.
+
+
+
+ To fix pods are not coming up or not ready or healthy
+scale down dewployment to zero -  kubectl scale deployment nginx-deployment  --replicas=0
+
+scale them up to the count I desire
+
+Check pod status: Start by checking the status of the pods using the kubectl get pods command. Look for pods that are in a pending, not ready, or error state. The status will provide insights into the issue.
+
+Inspect pod events: Use the kubectl describe pod <pod-name> command to view the events associated with a specific pod. Events can provide information about errors or issues preventing the pod from running or becoming ready.
+
+Check resource availability: Ensure that the cluster has enough resources (CPU, memory, etc.) available to schedule and run the pods. Insufficient resources can cause pods to remain in a pending state. Consider adjusting resource limits or allocating more resources if needed.
+
+Examine container logs: Retrieve the logs from the problematic pod using the kubectl logs <pod-name> command. Analyze the logs to identify any error messages or issues within the container that might be preventing it from starting or functioning correctly.
+
+Verify container readiness and liveness probes: Containers within pods can have readiness and liveness probes defined. Check the pod's configuration (kubectl describe pod <pod-name>) to ensure that these probes are properly configured and working as expected. Adjust the probe settings if necessary.
+
+Validate networking configuration: Verify that the networking configuration is correct and that the pod's required ports are open and accessible. Ensure that the pod is assigned a valid IP address and that any required services or endpoints are correctly configured.
+
+Check image availability: If you're using a private container registry, make sure the cluster has access to pull the container image. Ensure the image name and tag are correctly specified in the pod's configuration.
+
+Review resource dependencies: Pods might have dependencies on other resources, such as config maps, secrets, or persistent volumes. Check if these dependencies are properly configured and accessible by the pods.
+
+Restart the pods: In some cases, restarting the pods (kubectl delete pod <pod-name>) can resolve transient issues or allow them to pick up updated configurations.
+
+Monitor cluster components: Keep an eye on the cluster's control plane components (e.g., kubelet, etcd) and ensure they are running properly. Issues with these components can impact the scheduling and health of pods
+
+
+Namespace: come with pod, if pod is in namespace 1 containers are inside pod 1
+  kubectl create namespae k8s-1 or kubectl create ns k8s-2
+  kubectl get ns
+  kubectl apply -f . --namespace k8s1
+  kubectl get pods --namespace k8s-1
+
+  kubectl get pods -n k8s-1 -owide
+
+
+  deployment check if desired or actual file matches
+
+  inside a the pod nginx and jenkins have been created
+
+
+Daemonset: Within environment and we have 5 working nodes that are running.
+          We want 1 pod of grafana to run on each node by default.
+          Used to deploy one particular kind of application to every node present in the system
+
+Ingress: API entity which allows the access of internet traffic on your pod.

@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: quiz-app-deployment
+  name: app-deployment
   labels:
-    app: quiz-app
+    app: app
 spec:
   replicas: 2  # Set the desired number of replicas as needed
   selector:
     matchLabels:
-      app: quiz-app
+      app: app
   template:
     metadata:
       labels:
-        app: quiz-app
+        app: app
     spec:
       containers:
       - name: quiz-app
@@ -26,20 +26,37 @@ spec:
           requests:
             cpu: "0.5"
             memory: "256Mi"
+      - name: create-ec2
+        image: ukohae39/create-ec2:latest  # Update with the correct image URL
+        ports:
+        - containerPort: 5000  # Update with the correct port
+        resources:
+          limits:
+            cpu: "1"
+            memory: "512Mi"
+          requests:
+            cpu: "0.5"
+            memory: "256Mi"
 ---            
 apiVersion: v1
 kind: Service
 metadata:
-  name: quiz-app-service
+  name: app-service
   labels:
-    app: quiz-app
+    app: app
 spec:
   selector:
-    app: quiz-app
+    app: app
   ports:
-    - protocol: TCP
-      port: 80
+    - name: quiz-app-port
+      protocol: TCP
+      port: 3000
       targetPort: 3000  # Update with the correct target port
+    - name: create-ec2-port
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
   type: NodePort
 
-  # kubectl port-forward podName 3000:3000
+  # kubectl port-forward app-deployment-6c7d979f47-4h6zd 3000:3000
+  # kubectl port-forward app-deployment-6c7d979f47-mhx9j 5000:5000

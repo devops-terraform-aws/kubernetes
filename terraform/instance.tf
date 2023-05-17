@@ -1,15 +1,11 @@
 #############
 ### Count ###
 #############
-
 resource "aws_instance" "name" {
-  count    = length(var.region)
-  provider = aws.us-east
-
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
   tags = {
-    "Name" = "dev"
+    "Name" = "dev-${random_id.name.hex}"
   }
   security_groups = [aws_security_group.security.name]
   key_name        = aws_key_pair.generated_key.key_name

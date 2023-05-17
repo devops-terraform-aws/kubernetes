@@ -1,6 +1,6 @@
-LoadBalacing = Network LoadBalacing
+LoadBalacing = Network LoadBalacing:
 
-Methods of Deploying an Application
+  Methods of Deploying an Application
  - Deploment - Bigger set ( stalest application) - they dont perform read and write operation\
               A Deployment is a higher-level abstraction that provides declarative updates for managing application deployments.
               It is responsible for creating and managing ReplicaSets.
@@ -11,9 +11,9 @@ Methods of Deploying an Application
 
 
  To fix pods are not coming up or not ready or healthy
-scale down dewployment to zero -  kubectl scale deployment nginx-deployment  --replicas=0
+  scale down dewployment to zero -  kubectl scale deployment nginx-deployment  --replicas=0
 
-scale them up to the count I desire
+  scale them up to the count I desire
 
 Check pod status: Start by checking the status of the pods using the kubectl get pods command. Look for pods that are in a pending, not ready, or error state. The status will provide insights into the issue.
 

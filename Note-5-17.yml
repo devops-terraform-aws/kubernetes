@@ -1,0 +1,42 @@
+Probes:
+  - liveness probes:  Check wether container is up or not. spin up a pod (sping an application inside), applicvation needs time to come up. Defined in spec section
+    intialDelaySeconds: after how much time applying to check if applciation is up.
+    periodSeconds : after how many sec to check if container is alive
+    failureThreshold:  after * sec it didn't recieve request, will declare it gone
+  - readiness probes: check whether my pod/container is ready to serve the traffic or not
+  - startup probes: used for the application which follows gRPC protocol
+
+readinessProbe: #This probe will check, whether your pod/container is ready to serve the traffic or not
+        readinessProbe:
+          httpGet:
+            path: /readinesscheck.txt
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 24
+          successThreshold: 1
+
+livenessProbe: #This will check whether my contanier is up or not
+        livenessProbe:
+          httpGet:
+            path: /livenesscheck.txt
+            port: 80
+          initialDelaySeconds: 10
+
+Labels:
+
+Selectors:
+
+Service: Internet - svc - pod
+
+
+NodeName: To schedule where to run container on pod
+
+
+resources: Resctricting pods from consuming resources ( nwithin spec)
+  requests
+
+
+NodeAffinity:  When we schedule application to run on pod, and not enough resources, it will run on another pod
+
+Taint (node) and Toleration(pod): will try to resstrict the pods to get scheduled into pods

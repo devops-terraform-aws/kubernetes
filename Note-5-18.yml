@@ -1,0 +1,14 @@
+Secrets: Used to store sentitive information. Encrypted password.
+
+Harshicorp with Kubernetes cluster: Create User Identity and pass it there
+
+KMS:
+
+ConfigMaps: Used to store information which are not safe
+
+Ways to store cred: as a system variable or config ConfigMaps
+
+
+Persistent Volume: If pod goes down the volume still remains
+
+Persistent Volume Claim: Request volume needed for pod

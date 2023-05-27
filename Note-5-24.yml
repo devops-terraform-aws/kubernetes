@@ -1,0 +1,12 @@
+Questions:
+- Docker max depth issue -  As the number of images increases, so does the local storage, resulting in the error: max depth exceeded. The maximum depth does not indicate a storage-capacity error. Instead, it indicates that the api image we were creating had too many layers.
+
+Headless Service:
+ Trying to access kubernetes cluster  through service ( what ever pod am having it will acess them)
+  When it comes write it directs specific databse
+
+  When it is read direstcs to all the database
+
+Statefulsets: Manages pods that are based on identical specs -  They are not interchangeable. Spindud when we have a persistent volume
+
+  No gaurantee of storage deletion

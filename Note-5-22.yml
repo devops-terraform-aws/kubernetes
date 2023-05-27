@@ -1,0 +1,20 @@
+- INIT COntainer: Supporting container that support our application
+
+- Stateful: READ WRITE OPERATION (Replica Set)
+
+- Issues: No sync between container
+###################################################################
+
+- Stateles: Deployment, READ WRITE 
+
+- request:  system to allopw thids ,ich resource in order to run
+
+- limit: advising my schedfuler to stop my cobtainer if this limit has reached out
+
+
+- Replication controller - sits on control plane. Takes care of replicas scale up and down
+
+- One grafana should always be there to monitor health of nodes - apply a deamon set. If any new node is introduced to cluster. It will spin up automatically
+
+
+- Rolling update and Rollback (HELM)

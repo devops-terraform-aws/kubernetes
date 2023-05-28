@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: quiz-app
-        image: ukohae39/quiz-app:latest  # Update with the correct image URL
+        image: ukohae39/quiz-app  # Update with the correct image URL
         ports:
         - containerPort: 3000  # Update with the correct port
         resources:
@@ -51,11 +51,11 @@ spec:
     - name: quiz-app-port
       protocol: TCP
       port: 3000
-      targetPort: 3000  # Update with the correct target port
+      nodePort: 30030  # Update with the correct target port
     - name: create-ec2-port
       protocol: TCP
       port: 5000
-      targetPort: 5000
+      nodePort: 30031
   type: NodePort
 
   # kubectl port-forward app-deployment-6c7d979f47-4h6zd 3000:3000
